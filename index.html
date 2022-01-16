@@ -1,0 +1,72 @@
+<html>
+<head>
+    <script>
+        let answ
+        function GU() {
+            // document.getElementById("but").style.visibility="hidden";
+            document.getElementById("input").style.visibility="visible";
+            let oper = ['-', '+'];
+            function GA() {
+                let a = 0;
+                let b = 0;
+                let c = 0;
+                while (true) {
+                    a = Math.floor(Math.random() * 10);
+                    b = Math.floor(Math.random() * 10);
+                    c = Math.floor(Math.random() * oper.length);
+                    if (a + b <= 10) {
+                        if (a - b >= 0) {
+                            break
+                        }
+                    }
+                }
+                if (c == 0) {
+                    answ = a - b
+                }
+                else {
+                    answ = a + b
+                }
+                document.getElementById("urav").innerHTML=String(a) + oper[c] + String(b) + "= ?";
+            }
+            GA()
+        }
+        function GB() {
+            if (document.getElementById("input").value == answ) {
+                console.log("ok", answ, document.getElementById("input").value)
+                document.getElementById("prover").style.background="green"
+            }
+            else {
+                console.log("neok", answ, document.getElementById("input").value)
+                document.getElementById("prover").style.background="red"
+            }
+        }
+        function GC() {
+            document.getElementById("input").value = ""
+            document.getElementById("prover").style.background="gray"
+            GU()
+        } 
+        window.onload = function() {
+            GU()
+        }
+    </script>
+</head>
+<body>
+    <div style="display: flex; background-color: #D07878; width: 100%; height: 100%;">
+        <div style="display: flex; flex-direction: column; width: 100%; height: 100%; justify-content: flex-start;">
+            <div style="display: flex; flex-direction: row; justify-content: center; width: 100%; margin-top: 57px;">
+                <div style="display: flex; font-size: 100px; font-family: 'Baloo 2', cursive;">Посчитай!</div>
+            </div>
+            <div style="display: flex; flex-direction: row; margin-left: 240px; margin-top: 30px; font-family: 'Baloo 2', cursive;">
+                <div style="display: flex; font-size: 75px;" id="urav">1 + 2 = </div>
+                <input type="number" id="input" style="display: flex; height: 70px; width: 150px; margin-top: 25px; font-size: 50px; visibility: visible;  margin-left: 300px; border-radius: 10px; position: absolute;">
+                <div style="display: flex; background-color: gray; width: 50px; height: 70px; margin-left: 400px; margin-top: 25px; border-radius: 10px; position: absolute;" id="prover"></div>
+            </div>
+            <button style="display: flex; width: 482px; height: 74px; font-size: 40px; font-family: 'Baloo 2', cursive; margin-left: 240px; margin-top: 30px; border-radius: 10px; background-color: #BCF9AD;" id="but0" onclick="GB()">проверить</button>
+            <button style="display: flex; width: 482px; height: 74px; font-size: 40px; font-family: 'Baloo 2', cursive; margin-left: 240px; margin-top: 30px; border-radius: 10px; background-color: #BCF9AD;" id="but1" onclick="GC()">следующий пример</button>
+        <!-- <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; font-size: 75px;" id="urav">пример</div>
+            <div style="display: flex; font-size: 75px;" id="otv">ваш ответ:</div>
+        </div> -->
+    </div>
+</body>
+</html>
